@@ -1,0 +1,8 @@
+version: '3'
+services:
+  petclinic:
+    ports:
+        - "8081:8080"   
+    build:
+      context: .
+      dockerfile: Dockerfile
