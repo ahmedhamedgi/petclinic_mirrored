@@ -23,8 +23,8 @@ pipeline {
             echo "building the docker image..."
             withCredentials([usernamePassword(credentialsId:'docker-for-jenkins',passwordVariable:'PASS',usernameVariable:'USER')]){
             bat "docker login -u $USER -p $PASS"
-            bat 'docker build -t aeramzy9/pet-clinic:1.0 .'
-            bat 'docker push aeramzy9/pet-clinic:1.0'
+            bat 'docker build -t aeramzy9/pet-clinic:2.0 .'
+            bat 'docker push aeramzy9/pet-clinic:2.0'
             }
             }
         }
