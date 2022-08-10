@@ -12,9 +12,9 @@ pipeline {
         stage('Test Application') {
             steps {
                 echo 'Testing Petclinic Application'
-                bat '.\mvnw test'
+                bat 'mvn test'
             }
-            post{
+             post{
                 always{
                     junit '**/target/surefire-reports/TEST-*.xml'
                 }
