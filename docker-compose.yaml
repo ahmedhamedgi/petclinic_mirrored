@@ -1,10 +1,9 @@
 version: '3'
 services:
   petclinic:
+    image: aeramzy9/pet-clinic:latest
     ports:
         - "8081:8080"   
     build:
       context: .
-      dockerfile: Dockerfile
-    image: aeramzy9/pet-clinic:4.0
-    
+      dockerfile: Dockerfile    

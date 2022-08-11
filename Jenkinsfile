@@ -29,6 +29,7 @@ pipeline {
             withCredentials([usernamePassword(credentialsId:'docker-for-jenkins',passwordVariable:'PASS',usernameVariable:'USER')]){
             bat "docker login -u $USER -p $PASS"
             bat 'docker-compose -f docker-compose.yaml up'
+            bat 'docker-compose push'
             }
             }
         }
