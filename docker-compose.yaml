@@ -6,5 +6,5 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: aeramzy9/pet-clinic:latest
+    image: aeramzy9/pet-clinic:4.0
     
