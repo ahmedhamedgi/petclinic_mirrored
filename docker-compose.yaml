@@ -1,16 +1,5 @@
 version: '3'
 services:
-  petclinic:
-    image: aeramzy9/pet-clinic:latest
-    depends_on:
-      - mysqldb    
-    ports:
-        - "8081:8080"   
-    build:
-      context: .
-      dockerfile: Dockerfile   
-
-
   mysqldb:
     image: mysql:5.7
     ports:
@@ -22,7 +11,19 @@ services:
       - MYSQL_PASSWORD=petclinic
       - MYSQL_DATABASE=petclinic
     volumes:
-      - "./conf.d:/etc/mysql/conf.d:ro"
+      - "./conf.d:/etc/mysql/conf.d:ro"  
+  petclinic:
+    image: aeramzy9/pet-clinic:latest
+    depends_on:
+      - mysqldb    
+    ports:
+        - "8081:8080"   
+    build:
+      context: .
+      dockerfile: Dockerfile   
+
+
+
 
 
       
