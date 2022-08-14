@@ -1,18 +1,22 @@
 version: '3'
 services:
-  mysqldb:
-    image: mysql:latest
+  mysql:
+    image: mysql:5.7
     ports:
       - "3307:3306"
     environment:
-      - MYSQL_DATABASE=petclinic
-      - MYSQL_ROOT_PASSWORD=petclinic
+      - MYSQL_ROOT_PASSWORD=
+      - MYSQL_ALLOW_EMPTY_PASSWORD=true
       - MYSQL_USER=petclinic
-      - MYSQL_PASSWORD=petclinic 
+      - MYSQL_PASSWORD=petclinic
+      - MYSQL_DATABASE=petclinic
+    volumes:
+      - "./conf.d:/etc/mysql/conf.d:ro"
   petclinic:
-    image: aeramzy9/pet-clinic:latest
     depends_on:
-      - mysqldb    
+      - mysql  
+    image: aeramzy9/pet-clinic:latest
+
     ports:
         - "8081:8080"   
     build:
