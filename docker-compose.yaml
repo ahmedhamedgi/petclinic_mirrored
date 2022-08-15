@@ -3,11 +3,12 @@ services:
 
   mysql:
     image: mysql:5.7
+    container_name: petclinic-mysql
     ports:
       - "3306:3306"
-    # build:
-      # context: .
-      # dockerfile: Dockerfile.data
+    build:
+      context: .
+      dockerfile: Dockerfile.data
     environment:
       - MYSQL_ROOT_PASSWORD=
       - MYSQL_ALLOW_EMPTY_PASSWORD=true
@@ -17,6 +18,7 @@ services:
     volumes:
       - "./conf.d:/etc/mysql/conf.d:ro"
   petclinic:
+    container_name: petclinic-app
     depends_on:
       - mysql  
     image: aeramzy9/pet-clinic:latest

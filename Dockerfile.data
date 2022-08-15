@@ -1,0 +1,8 @@
+FROM mysql:5.7.8
+EXPOSE 3306
+COPY /src/main/resources/db/mysql/user.sql /docker-entrypoint-initdb.d/
+COPY /src/main/resources/db/mysql/schema.sql /docker-entrypoint-initdb.d/
+COPY /src/main/resources/db/mysql/data.sql /docker-entrypoint-initdb.d/
+CMD ["/entrypoint.sh", "mysqld"]
+
+# run application with this command line 
