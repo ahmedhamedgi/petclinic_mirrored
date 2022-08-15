@@ -1,10 +1,10 @@
 version: '3'
 services:
+
   mysql:
-    container_name: petclinic_mysql
     image: mysql:5.7
     ports:
-      - "3307:3306"
+      - "3306:3306"
     environment:
       - MYSQL_ROOT_PASSWORD=
       - MYSQL_ALLOW_EMPTY_PASSWORD=true
@@ -14,18 +14,25 @@ services:
     volumes:
       - "./conf.d:/etc/mysql/conf.d:ro"
   petclinic:
-    container_name: petclinic_app
     depends_on:
       - mysql  
     image: aeramzy9/pet-clinic:latest
-
     ports:
         - "8081:8080"   
     build:
       context: .
       dockerfile: Dockerfile   
     environment:
-     - SPRING_PROFILES_ACTIVE=mysql          
+    #  - SPRING_PROFILES_ACTIVE=mysql,prod
+      - MYSQL_ROOT_PASSWORD= 
+      - MYSQL_ALLOW_EMPTY_PASSWORD=true    
+      - MYSQL_HOST=mysql
+      - MYSQL_PORT=3307
+      - MYSQL_USER=petclinic
+      - MYSQL_PASSWORD= petclinic
+      - MYSQL_DATABASE= petclinic
+
+
 
 
 
