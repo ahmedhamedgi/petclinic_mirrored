@@ -5,6 +5,9 @@ services:
     image: mysql:5.7
     ports:
       - "3306:3306"
+    # build:
+      # context: .
+      # dockerfile: Dockerfile.data
     environment:
       - MYSQL_ROOT_PASSWORD=
       - MYSQL_ALLOW_EMPTY_PASSWORD=true
@@ -23,14 +26,12 @@ services:
       context: .
       dockerfile: Dockerfile   
     environment:
-    #  - SPRING_PROFILES_ACTIVE=mysql,prod
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/petclinic?autoReconnect=true&useSSL=false
       - MYSQL_ROOT_PASSWORD= 
       - MYSQL_ALLOW_EMPTY_PASSWORD=true    
-      - MYSQL_HOST=mysql
-      - MYSQL_PORT=3307
+      - MYSQL_PORT=3306
       - MYSQL_USER=petclinic
       - MYSQL_PASSWORD= petclinic
-      - MYSQL_DATABASE= petclinic
 
 
 
