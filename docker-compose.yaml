@@ -8,12 +8,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.data
-    environment:
-      - MYSQL_ROOT_PASSWORD=
-      - MYSQL_ALLOW_EMPTY_PASSWORD=true
-      - MYSQL_USER=petclinic
-      - MYSQL_PASSWORD=petclinic
-      - MYSQL_DATABASE=petclinic
+    env_file:
+      - secrets/db.env
     volumes:
       - "./conf.d:/etc/mysql/conf.d:ro"
   petclinic:
@@ -26,13 +22,9 @@ services:
     build:
       context: .
       dockerfile: Dockerfile   
-    environment:
-      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/petclinic?autoReconnect=true&useSSL=false
-      - MYSQL_ROOT_PASSWORD= 
-      - MYSQL_ALLOW_EMPTY_PASSWORD=true    
-      - MYSQL_PORT=3306
-      - MYSQL_USER=petclinic
-      - MYSQL_PASSWORD= petclinic
+    env_file:
+      - secrets/db.env      
+
 
 
 
