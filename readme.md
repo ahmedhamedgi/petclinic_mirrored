@@ -22,7 +22,6 @@ You can then acceswwws petclinic here: http://localhost:8080/
 
 Or you can run it from Maven directly using the Spring Boot Maven plugin. If you do this it will pick up changes that you make in the project immediately (changes to Java source files require a compile as well - most people use an IDE for this):
 
-```ww
 ./mvnw spring-boot:run
 ```
 
@@ -155,7 +154,6 @@ The Spring PetClinic sample application is released under version 2.0 of the [Ap
 [spring-petclinic-reactjs]: https://github.com/spring-petclinic/spring-petclinic-reactjs
 [spring-petclinic-graphql]: https://github.com/spring-petclinic/spring-petclinic-graphql
 [spring-petclinic-kotlin]: https://github.com/spring-petclinic/spring-petclinic-kotlin
-[spring-petclinic-rest]: https://github.com/spring-petclinic/spring-petclinic-rest
 
 pr to main
 
